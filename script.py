@@ -95,12 +95,12 @@ def run_data_updater():
 
     warnings.filterwarnings("ignore")
 
-    print('***** Welcome to Maverick Retail Data Processor *****')
+    print('***** Maverick Retail Data Processor: By Wave-2 Analytics Ltd. *****')
     time.sleep(0.5)
     status = input('>> Proceed? Y/n ')
-    if status.lower() == 'n':
+    if status.strip().lower() == 'n':
         os.abort()
-    else:   
+    if status.strip().lower() == 'y':   
         print(">> upload previous dataset")
         time.sleep(2)
         path_prev = easygui.fileopenbox(msg = "Upload Previous Dataset",
@@ -113,7 +113,7 @@ def run_data_updater():
             print('***** MESSAGE ***** \n>> wrong file extension. Restart and Upload csv')
             os.abort()
         except:
-            print('***** MESSAGE ***** \n>>File upload failed')
+            print('***** MESSAGE ***** \n>> File upload failed')
             os.abort()
         else:
             print(">> data uploaded successfully")
@@ -127,7 +127,7 @@ def run_data_updater():
             current_data = read_data(path_cur)
             _period = current_data['Period'][0]
         except pd.errors.ParserError:
-            print('***** MESSAGE ***** \n>>wrong file extension. Restart and Upload csv')
+            print('***** MESSAGE ***** \n>> wrong file extension. Restart and Upload csv')
             os.abort()
         except:
             print('***** MESSAGE ***** \n>> File upload failed')
