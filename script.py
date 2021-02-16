@@ -75,8 +75,6 @@ def data_updater(current_df, previous_df):
     return df_backward, df_forward
 
 # function for i/o
-
-
 def read_data(path, **kwargs):
     import pandas as pd
 
@@ -94,52 +92,60 @@ def run_data_updater():
     import warnings
     import os
     import pandas as pd
-    
+
     warnings.filterwarnings("ignore")
 
-    print(">> upload previous dataset")
-    time.sleep(2)
-    path_prev = easygui.fileopenbox()
+    print('***** Welcome to Maverick Retail Data Processor *****')
+    time.sleep(0.5)
+    status = input('>> Proceed? Y/n ')
+    if status.lower() == 'n':
+        os.abort()
+    else:   
+        print(">> upload previous dataset")
+        time.sleep(2)
+        path_prev = easygui.fileopenbox(msg = "Upload Previous Dataset",
+                                        filetypes = "*.csv")
 
-    print(">> uploading previous dataset ... ")
-    try:
-        previous_data = read_data(path_prev)
-    except pd.errors.ParserError:
-        print('>> wrong file extension. Restart and Upload csv')
-        os.abort()
-    except:
-        print('>> File upload failed')
-        os.abort()
-    else:
-        print(">> data uploaded successfully")
-    
-    print(">> upload current dataset")
-    time.sleep(2)
-    path_cur = easygui.fileopenbox()
-    print(">> uploading current dataset ...")
-    try:
-        current_data = read_data(path_cur)
-        _period = current_data['Period'][0]
-    except pd.errors.ParserError:
-        print('>> wrong file extension. Restart and Upload csv')
-        os.abort()
-    except:
-        print('>> File upload failed')
-        os.abort()
-    else:
-        print(">> data uploaded successfully")
-        df_backward, df_forward = data_updater(current_data, previous_data)
-        if len(df_backward) == 0 and len(df_forward) == 0:
-            print('>> No dataset generated')
-        if len(df_backward) !=0:
-            print('>> backward dataset generated')
-            df_backward.to_csv(f'./data/backward_{_period}.csv', index=False, encoding='iso-8859-1')
-        if len(df_forward) !=0:
-            print('>> forward dataset generated')
-            df_forward.to_csv(f'./data/forward_{_period}.csv', index=False, encoding='iso-8859-1')
-        time.sleep(1)
-        print('>> Done')
-    
+        print(">> uploading previous dataset ... ")
+        try:
+            previous_data = read_data(path_prev)
+        except pd.errors.ParserError:
+            print('***** MESSAGE ***** \n>> wrong file extension. Restart and Upload csv')
+            os.abort()
+        except:
+            print('***** MESSAGE ***** \n>>File upload failed')
+            os.abort()
+        else:
+            print(">> data uploaded successfully")
+
+        print(">> upload current dataset")
+        time.sleep(2)
+        path_cur = easygui.fileopenbox(msg = 'Upload Current Dataset',
+                                        filetypes = "*.csv")
+        print(">> uploading current dataset ...")
+        try:
+            current_data = read_data(path_cur)
+            _period = current_data['Period'][0]
+        except pd.errors.ParserError:
+            print('***** MESSAGE ***** \n>>wrong file extension. Restart and Upload csv')
+            os.abort()
+        except:
+            print('***** MESSAGE ***** \n>> File upload failed')
+            os.abort()
+        else:
+            print(">> data uploaded successfully")
+            df_backward, df_forward = data_updater(current_data, previous_data)
+            if len(df_backward) == 0 and len(df_forward) == 0:
+                print('***** MESSAGE ***** \n>> No dataset generated')
+            if os.path.exists('./data') == False:
+                os.mkdir('./data')
+            if len(df_backward) !=0:
+                df_backward.to_csv(f'./data/backward_{_period}.csv', index=False, encoding='iso-8859-1')
+                print(f'***** MESSAGE ***** \n>> backward_{_period}.csv generated and stored in \n{os.path.abspath("./data")}\n')
+            if len(df_forward) !=0:
+                df_forward.to_csv(f'./data/forward_{_period}.csv', index=False, encoding='iso-8859-1')
+                print(f'***** MESSAGE ***** \n>> forward_{_period}.csv generated and stored in \n{os.path.abspath("./data")}')
 
 
-run_data_updater()
+if __name__ == "__main__":
+    run_data_updater()
