@@ -13,14 +13,12 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
 
    ```
        python -m venv venv
-
    ```
 
    linux/MAC os:
 
    ```
        python3 -m venv venv
-
    ```
 
 3. Activate the virtual environment
@@ -29,14 +27,12 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
 
    ```
        venv\Scripts\activate.bat
-
    ```
 
    linux/MAC os:
 
    ```
        source venv/bin/activate
-
    ```
 
 4. Install required packages
@@ -45,14 +41,12 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
 
    ```
        pip install -r requirements.txt
-
    ```
 
    linux/MAC os:
 
    ```
        pip3 install -r requirements.txt
-
    ```
 
 5. Run Script.py
@@ -61,14 +55,12 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
 
    ```
        python script.py
-
    ```
 
    linux/MAC os:
 
    ```
        python3 script.py
-
    ```
 
 6. Check workding directory for data folder
