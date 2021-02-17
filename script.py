@@ -1,3 +1,4 @@
+# import modules
 import easygui
 import time
 import warnings
@@ -6,7 +7,7 @@ import pandas as pd
 import numpy as np
 
 
-
+# function to update data
 def data_updater(current_df, previous_df):
     '''
     data_updater compares itemsets in current database to that of 
@@ -84,7 +85,7 @@ def data_updater(current_df, previous_df):
 
     return df_backward, df_forward
 
-# function for i/o
+# function to read data
 def read_data(path, **kwargs):
     '''
     read_data takes a csv file path and returns a dataframe
@@ -118,7 +119,8 @@ def run_data_updater():
 
         print(">> uploading previous dataset ... ")
         try:
-            previous_data = pd.concat([read_data(path) for path in path_prev], ignore_index=True, axis=0)
+            previous_data = pd.concat([read_data(path) for path in path_prev], 
+                                            ignore_index=True, axis=0)
         except pd.errors.ParserError:
             print('***** MESSAGE ***** \n>> wrong file extension. Restart and Upload csv')
             os.abort()
@@ -150,11 +152,15 @@ def run_data_updater():
             if os.path.exists('./data') == False:
                 os.mkdir('./data')
             if len(df_backward) !=0:
-                df_backward.to_csv(f'./data/backward_{_period}.csv', index=False, encoding='iso-8859-1')
-                print(f'***** MESSAGE ***** \n>> backward_{_period}.csv generated and stored in \n{os.path.abspath("./data")}\n')
+                df_backward.to_csv(f'./data/backward_{_period}.csv', index=False, 
+                                    encoding='iso-8859-1')
+                print(f'***** MESSAGE ***** \n>> backward_{_period}.csv \
+                        generated and stored in \n{os.path.abspath("./data")}\n')
             if len(df_forward) !=0:
-                df_forward.to_csv(f'./data/forward_{_period}.csv', index=False, encoding='iso-8859-1')
-                print(f'***** MESSAGE ***** \n>> forward_{_period}.csv generated and stored in \n{os.path.abspath("./data")}')
+                df_forward.to_csv(f'./data/forward_{_period}.csv', index=False, 
+                                    encoding='iso-8859-1')
+                print(f'***** MESSAGE ***** \n>> forward_{_period}.csv \
+                        generated and stored in \n{os.path.abspath("./data")}')
 
 
 if __name__ == "__main__":
