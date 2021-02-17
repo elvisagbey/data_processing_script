@@ -8,6 +8,10 @@ import numpy as np
 
 
 def data_updater(current_df, previous_df):
+    '''
+    data_updater compares itemsets in current database to that of 
+    previous database and returns a csv file
+    '''
 
     # define dimensions
     dimensions = ['Period', 'Cycle', 'Country', 'Data Source', 'City_Region', 'Channel',
@@ -82,6 +86,9 @@ def data_updater(current_df, previous_df):
 
 # function for i/o
 def read_data(path, **kwargs):
+    '''
+    read_data takes a csv file path and returns a dataframe
+    '''
 
     df = pd.read_csv(path, encoding='iso-8859-1', **kwargs)
 
@@ -92,6 +99,9 @@ def read_data(path, **kwargs):
 
 # factory function
 def run_data_updater():
+    '''
+    run_data_updater is factory function to run data_updater when script.py is run.
+    '''
 
     warnings.filterwarnings("ignore")
 
