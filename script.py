@@ -1,7 +1,13 @@
+import easygui
+import time
+import warnings
+import os
+import pandas as pd
+import numpy as np
+
+
+
 def data_updater(current_df, previous_df):
-    #import modules
-    import pandas as pd
-    import numpy as np
 
     # define dimensions
     dimensions = ['Period', 'Cycle', 'Country', 'Data Source', 'City_Region', 'Channel',
@@ -76,7 +82,6 @@ def data_updater(current_df, previous_df):
 
 # function for i/o
 def read_data(path, **kwargs):
-    import pandas as pd
 
     df = pd.read_csv(path, encoding='iso-8859-1', **kwargs)
 
@@ -87,11 +92,6 @@ def read_data(path, **kwargs):
 
 # factory function
 def run_data_updater():
-    import easygui
-    import time
-    import warnings
-    import os
-    import pandas as pd
 
     warnings.filterwarnings("ignore")
 
@@ -102,7 +102,7 @@ def run_data_updater():
         os.abort()
     if status.strip().lower() == 'y':   
         print(">> upload previous dataset")
-        time.sleep(2)
+        time.sleep(1)
         path_prev = easygui.fileopenbox(msg = "Upload Previous Dataset",
                                         filetypes = "*.csv", multiple=True)
 
@@ -119,7 +119,7 @@ def run_data_updater():
             print(">> data uploaded successfully")
 
         print(">> upload current dataset")
-        time.sleep(2)
+        time.sleep(1)
         path_cur = easygui.fileopenbox(msg = 'Upload Current Dataset',
                                         filetypes = "*.csv")
         print(">> uploading current dataset ...")
