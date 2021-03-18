@@ -91,7 +91,7 @@ def read_data(path, **kwargs):
     read_data takes a csv file path and returns a dataframe
     '''
 
-    df = pd.read_csv(path, encoding='iso-8859-1', **kwargs)
+    df = pd.read_csv(path, **kwargs) #encoding='iso-8859-1' removed from pd.read_csv
 
     df.dropna(axis=0, how='all', inplace=True)
 
@@ -149,16 +149,15 @@ def run_data_updater():
             df_backward, df_forward = data_updater(current_data, previous_data)
             if len(df_backward) == 0 and len(df_forward) == 0:
                 print('***** MESSAGE ***** \n>> No dataset generated')
+                os.abort()
             if os.path.exists('./data') == False:
                 os.mkdir('./data')
             if len(df_backward) !=0:
-                df_backward.to_csv(f'./data/backward_{_period}.csv', index=False, 
-                                    encoding='iso-8859-1')
+                df_backward.to_csv(f'./data/backward_{_period}.csv', index=False) # encoding='iso-8859-1' commented out
                 print(f'***** MESSAGE ***** \n>> backward_{_period}.csv \
                         generated and stored in \n{os.path.abspath("./data")}\n')
             if len(df_forward) !=0:
-                df_forward.to_csv(f'./data/forward_{_period}.csv', index=False, 
-                                    encoding='iso-8859-1')
+                df_forward.to_csv(f'./data/forward_{_period}.csv', index=False)  # encoding='iso-8859-1' commented out
                 print(f'***** MESSAGE ***** \n>> forward_{_period}.csv \
                         generated and stored in \n{os.path.abspath("./data")}')
 
