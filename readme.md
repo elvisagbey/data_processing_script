@@ -7,35 +7,7 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
 
 1. script.py should be run from command line interface
 
-2. Create a python virtual environment
-
-   windows:
-
-   ```
-       python -m venv venv
-   ```
-
-   linux/MAC os:
-
-   ```
-       python3 -m venv venv
-   ```
-
-3. Activate the virtual environment
-
-   Windows:
-
-   ```
-       venv\Scripts\activate.bat
-   ```
-
-   linux/MAC os:
-
-   ```
-       source venv/bin/activate
-   ```
-
-4. Install required packages
+2. Install required packages
 
    Windows:
 
@@ -49,7 +21,7 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
        pip3 install -r requirements.txt
    ```
 
-5. Run Script.py
+3. Run Script.py
 
    Windows:
 
@@ -63,4 +35,4 @@ Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
        python3 script.py
    ```
 
-6. Check workding directory for data folder
+4. Check workding directory for data folder
