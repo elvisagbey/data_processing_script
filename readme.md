@@ -1,5 +1,5 @@
 <span style="color:blue; font-size:24px;font-weight:bold;">
-Maverick Retail Data Processor - By Wave-2 Analytics Ltd </span>
+Retail Data Processor</span>
 
 ---
 
