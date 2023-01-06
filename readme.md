@@ -1,7 +1,6 @@
 
 # Data Processing Script for Survey Data
 
-![](https://i.imgur.com/XynMRa3.png)
 <h2>Description</h2>
 A demo of data preprocessing script for a survey data project 
 <br></br>
