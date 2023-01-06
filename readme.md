@@ -4,7 +4,7 @@
 <h2>Description</h2>
 A demo of data preprocessing script for a survey data project 
 <br></br>
-The process of this project is to use python to automate a survey data preprocessing for onward consumption by a web app
+The goal of this project is to use python to automate a survey data preprocessing for onward consumption by a web app
 
 <h2>Languages and Packages Used</h2>
 
